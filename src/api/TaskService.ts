@@ -6,7 +6,7 @@ interface ApiResponse<T> {
     payload: T;
     message?: string;
 }
-// Geçici
+
 export const TaskService = {
 
     async listAll(): Promise<TaskDto[]> {
@@ -32,6 +32,13 @@ export const TaskService = {
     async userAll(userId: number): Promise<TaskDto[]> {
         const res = await apiClient.get<ApiResponse<TaskDto[]>>(`/users/${userId}/task`);
         return res.data.payload as TaskDto[];
-    }
+    },
+    async update(id: number , data: Partial<TaskDto>): Promise<TaskDto> {
+        const res = await apiClient.put<ApiResponse<TaskDto>>(`/task/${id}`, data);
+        return res.data.payload as TaskDto;
+    },
+
+    async delete(id: number): Promise<void> {
+        await apiClient.delete<ApiResponse<null>>(`/task/${id}`);
+    },
 };
-    
