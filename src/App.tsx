@@ -1,12 +1,17 @@
 import React from "react";
-import LoginForm from "./auth/LoginForm";
-import "./styles/index.css";
-const App: React.FC = () => {
+import { Container, Typography } from "@mui/material";
+import { BrowserRouter } from "react-router-dom";
+import { AppRouter } from "./router/AppRouter";
+function App() {
   return (
-    <div >
-      <LoginForm />
-    </div>
+    <Container sx={{ py: 4 }}>
+      <Typography variant="h4" gutterBottom>
+      </Typography>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </Container>
   );
-};
+}
 
 export default App;

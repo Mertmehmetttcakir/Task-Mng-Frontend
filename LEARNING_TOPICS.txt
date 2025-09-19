@@ -1,0 +1,135 @@
+PROJE CALISMA BASLIKLARI (OGRENME REHBERI)
+================================================
+
+1. React Fonksiyonel Bilesenler & Props
+- Dosyalar: src/App.tsx, src/tasks/TaskList.tsx, src/tasks/components/TaskTable.tsx, src/components/Layout.tsx, src/components/AppHeader.tsx, src/components/AppSidebar.tsx
+- Amaç: Fonksiyon tabanli bilesen gelistirme, veri ve callback aktarimi.
+- Odak Noktalari: Tek yonlu veri akisi, bilesen parcalama, yeniden kullanilabilirlik.
+- Mini Egzersiz: TaskTable'i satir bazli (TaskRow) bilesenlere bol.
+
+2. React Hook'lari (useState, useEffect, useCallback)
+- Dosyalar: TaskList.tsx, AppHeader.tsx, Layout.tsx
+- Odak: Yan etkilerin izolasyonu, bagimlilik dizisi, performans (referans stabilitesi).
+- Mini Egzersiz: TaskList form state'ini useReducer ile yeniden yaz.
+
+3. Global State (MobX)
+- Dosyalar: src/stores/authStore.ts, src/stores/uiStore.ts, src/stores/taskStore.ts
+- Kavramlar: makeAutoObservable, observer, store instance pattern.
+- Mini Egzersiz: taskStore'a computed pendingCount ekle ve header'da goster.
+
+4. Yetkilendirme / Kosullu UI
+- Dosya: TaskTable.tsx (isOwner, canActOnDept, isPending)
+- Mini Egzersiz: Yetki yoksa butonu gizlemek yerine tooltip ile mesaj goster.
+
+5. Routing (react-router-dom)
+- Dosya: App.tsx
+- Kavramlar: BrowserRouter, Routes, Route, Navigate
+- Mini Egzersiz: /tasks/:id rotasi ekle ve modal yerine sayfa ac.
+
+6. Layout & Shell Mimarisi
+- Dosyalar: Layout.tsx, AppHeader.tsx, AppSidebar.tsx
+- Mini Egzersiz: Sidebar'i daraltilabilir (collapse) yap.
+
+7. Navigasyon Konfigurasyonu
+- Dosya: src/config/navigation.tsx
+- Mini Egzersiz: Nav ogelerine requiredAuthRole ekleyip role gore filtrele.
+
+8. API Servis Katmani
+- Dosyalar: src/services/TaskService.ts, src/services/ResetService.ts
+- Odak: Tekrar eden base URL, hata yakalama, soyutlama.
+- Mini Egzersiz: Ortak axios instance (apiClient.ts) yaz.
+
+9. Tip Modelleme (DTO, Union Types)
+- Dosya: TaskService.ts (TaskDto, TaskStatus)
+- Mini Egzersiz: Yeni priority alanini ekleyip rozetle goster.
+
+10. Hata Yonetimi & Bildirim
+- Dosyalar: TaskList.tsx (try/catch), taskStore.ts (error state), ResetService.ts
+- Mini Egzersiz: Error turlerini (network, validation, auth) ayiran AppError olustur.
+
+11. Modal / Dialog Pattern
+- Dosya: TaskList.tsx (ConditionDialog, ContentDialog, SuccessDialog, ErrorDialog)
+- Mini Egzersiz: Form kaydederken optimistic UI dene.
+
+12. Form Yonetimi (Kontrollu Inputlar)
+- Dosya: TaskList.tsx
+- Mini Egzersiz: RHF + Zod entegre ederek create formunu tasarla.
+
+13. Material UI Kullanim Pratikleri
+- Bilesenler: AppBar, Drawer, Tabs, Table, Chip, Button, Stack, Typography
+- Mini Egzersiz: Ayrik theme.ts olustur ve ThemeProvider ile uygula.
+
+14. Tablo Sunumu ve Eylemler
+- Dosya: TaskTable.tsx
+- Mini Egzersiz: Baslik kolonunda client-side siralama ekle.
+
+15. Status Mapping
+- Dosya: tasks/status.ts
+- Mini Egzersiz: Durumlara ikon ekle (Pending=⌛, Completed=✓, Rejected=✕)
+
+16. Event-Driven Pattern (CustomEvent)
+- Dosya: TaskList.tsx (task:new)
+- Mini Egzersiz: CustomEvent yerine store metod cagrisina gec.
+
+17. Asenkron Yonetim & Yüklenme
+- Dosyalar: taskStore.load(), TaskList.tsx (loading indicator)
+- Mini Egzersiz: AbortController ekleyerek view degisiminde eski istegi iptal et.
+
+18. Kosullu Render & Guard Pattern
+- Dosya: TaskList.tsx (giris guard)
+- Mini Egzersiz: ProtectedRoute bileseni yaz.
+
+19. Stil Katmani & Tema
+- Dosyalar: src/styles/*.css
+- Mini Egzersiz: CSS degiskenlerini MUI palette'e tasiyip kaldir.
+
+20. Feature-First Mimarisi (Gecis Asamasi)
+- Hedef: features/tasks/... yapisina tam gecis, diger domainleri ozellesmek.
+- Mini Egzersiz: auth icin features/auth yapisini prototiple.
+
+21. Ayrismis Sorumluluk (Separation of Concerns)
+- Ornek: TaskService (HTTP), taskStore (state), TaskList (UI + orchestrasyon)
+- Mini Egzersiz: CRUD islemlerini store metodlarina tasiyip UI sadeleştir.
+
+22. Defansif Programlama & Dayaniklilik
+- Ornek: statusLabel default Unknown(x)
+- Mini Egzersiz: Beklenmeyen status'u console.warn ile logla.
+
+23. UX Geri Bildirim Kaliplari
+- Ornek: Spinner, disable buton, success/hata modal
+- Mini Egzersiz: Silme esnasinda satira "processing" stili ekle.
+
+24. Ileri Gelistirme Firsatlari
+- React Query / TanStack Query
+- TanStack Table
+- React Hook Form + Zod
+- Error Boundary + Sentry
+- Test (Jest + RTL)
+- Axios interceptors (token yenileme)
+- i18n
+
+OGRENME YOL HARITASI (ONERILEN SIRALAMA)
+1) React temel + Hooks
+2) MobX state
+3) API + hata stratejileri
+4) UI (MUI) + tablo + status
+5) Routing & layout
+6) Form dogrulama
+7) Event -> store refaktoru
+8) Asenkron iptal ve performans
+9) Feature-first tam gecis
+10) Optimizasyon, test, loglama
+
+UYGULAMALI MINI SPRINT GOREVLERI
+1. pendingCount computed + header
+2. apiClient.ts (axios instance)
+3. Store'a create/update/delete/approve/reject metodlari
+4. Client-side siralama
+5. AbortController ekle
+6. features/auth taslagi
+7. ThemeProvider + custom palette
+8. /tasks/:id detay route
+9. Optimistic delete
+10. RHF + Zod entegrasyonu
+
+Not: Bu dosyayi istediğin gibi genisletebilir veya tamamlanan maddeleri isaretleyebilirsin.
